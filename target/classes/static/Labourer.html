@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <title>FIEMP</title>
+    <h1 id="h1">Farm Inventory & Employees Management Portal</h1>
+    <h2 id="h2">Labourer Details</h2>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <link href="styles.css" rel="stylesheet"/>
+</head>
+<body  id="container">
+<script>
+    function actionOnSubmit()
+    {
+        let e = document.getElementById("menu");
+        let formaction = e.options[e.selectedIndex].value;
+        document.form1.action = formaction;
+    }
+</script>
+<form name="form1" onSubmit="actionOnSubmit()"  method ="get" style="margin-left: 50px">
+    <label style="font-weight: bold">Select Menu Type:</label>
+    <select id="menu" name="'menu" style="background-color:#B8E9E4; text-align: center ">
+        <option value="/">Item</option>
+        <option selected value="/labourer">Labourer</option>
+        <option value="/equipment">Equipment</option>
+    </select>
+    <input type="submit" value="Go" class="button" id="button1">
+</form>
+<table border="2" align="center" class="table">
+    <thead class="tHead">
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Mobile Number</th>
+            <th>Available Options</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr th:each="labourer : ${listLabourers}" style="text-align: center" >
+        <td th:text="${labourer.id}">Id</td>
+        <td th:text="${labourer.firstName}">First Name</td>
+        <td th:text="${labourer.lastName}">Last Name</td>
+        <td th:text="${labourer.age}">Age</td>
+        <td th:text="${labourer.address}">Address</td>
+        <td th:text="${labourer.mobileNumber}">Mobile Number</td>
+        <td>
+            <button class="buttonEdit"><a class="anchor"  th:href="@{/labourer/update/{id}(id = ${labourer.id})}">Update</a></button>
+            <button class="buttonDel"><a class="anchor"  th:href="@{/labourer/delete/{id}(id = ${labourer.id})}">Delete</a></button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div class="addItem">
+    <form action="/AddLabourer.html" >
+        <button id="button2">Add New Labourer</button>
+    </form>
+</div>
+<div class="footer_cover">
+    <footer id="footer">Developed by Vinura Chandrasekara(184024H)</footer>
+</div>
+</body>
+</html>

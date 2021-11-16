@@ -1,0 +1,96 @@
+#h1 {
+    font-family: Georgia;
+    text-decoration-line: underline;
+    text-align: center;
+}
+
+#h2 {
+    font-family: Georgia;
+    text-align: center;
+}
+
+#h2_add {
+    font-family: Georgia;
+    text-align: center;
+    margin-top: 15vh;
+}
+
+#container {
+    background-color: #CFFBBE;
+    overflow: hidden;
+}
+
+#button1,#button2,#button3{
+    background-color: #0957C9;
+    color: white
+}
+
+#footer{
+    font-family: Rockwell;
+    color: #9651B2;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+#button1:hover,#button2:hover,#button3:hover,.buttonDel:hover,.buttonEdit:hover,.anchor:hover{
+    background-color: #517EE9;
+}
+
+.anchor{
+    text-decoration: none;
+    color: white;
+}
+
+.buttonEdit {
+    background-color: #92B251;
+}
+
+.buttonDel {
+    background-color: #DC3546;
+}
+
+.table {
+    background-color: #B8E9E4;
+    margin-top: 50px;
+}
+
+.tHead {
+    background-color: #F3E8BD;
+}
+
+.add,.addItem{
+    display:flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.addItem{
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.addFormDiv{
+    display:flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.formbtn{
+    display:flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.footer_cover{
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    width: 100%;
+}
+
+
+
+
+

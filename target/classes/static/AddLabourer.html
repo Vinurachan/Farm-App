@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>FIEMP</title>
+    <h2 id="h2_add">Add New Labourer</h2>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body id="container">
+<script th:inline="javascript">
+    var msg = [[${alert[0]}]];
+</script>
+<script type="text/javascript">
+    msg ? window.onload = function(){
+        alert(msg);
+    }:null
+    function validateForm() {
+        var a = document.forms["add"]["firstName"].value;
+        var b = document.forms["add"]["lastName"].value;
+        var c = document.forms["add"]["age"].value;
+        var d = document.forms["add"]["address"].value;
+        var e = document.forms["add"]["mobileNumber"].value;
+        if (a == null || a == "" ||  b == null || b == ""||  c == null || c == ""|| d == null || d == ""||  e == null || e == "") {
+            alert("Please fill all the required fields");
+            return false;
+        }
+    }
+</script>
+<div class="addFormDiv">
+    <form name="add" style="background-color: #B8E9E4">
+        <table border="0" cellpadding="10">
+            <tr>
+                <td style="font-weight: bold">First Name:</td>
+                <td><input name="firstName" id="firstName" placeholder="Enter First Name" pattern="[A-Za-z]*$" title="Letters only" /></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Last Name:</td>
+                <td><input name="lastName" id="lastName" placeholder="Enter Last Name" pattern="[A-Za-z]*$" title="Letters only" /></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Age:</td>
+                <td><input name="age" id="age" placeholder="Enter Age" pattern="^[0-9]{1,2}$" title="2 digit numbers only" /></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Address:</td>
+                <td><input name="address" id="address" placeholder="Enter Address" pattern="^[a-zA-Z0-9_/,.-]*$" title="Alphanumeric and address characters only" /></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Mobile Number:</td>
+                <td><input name="mobileNumber" id="mobileNumber" placeholder="Enter Mobile Number" pattern="^[0-9]{10}$" title="10 digit numbers only" /></td>
+            </tr>
+        </table>
+        <div class="formbtn">
+            <button id="button1" type="submit" name="btn1" formaction="/labourer">Go Back</button>
+            <button id="button2" type="reset">Clear</button>
+            <button id="button3" type="submit" name="btn2" formmethod="post" formaction="/labourer/add" onclick="return validateForm()" >Add Labourer</button>
+        </div>
+    </form>
+</div>
+<div class="footer_cover">
+    <footer id="footer">Developed by Vinura Chandrasekara(184024H)</footer>
+</div>
+<style type="text/css">
+    #h2_add {
+        font-family: Georgia;
+        text-align: center;
+        margin-top: 15vh;
+    }
+    #container {
+        background-color: #CFFBBE;
+        overflow: hidden;
+    }
+    #button1,#button2,#button3{
+        background-color: #0957C9;
+        color: white
+    }
+    #footer{
+        font-family: Rockwell;
+        color: #9651B2;
+        font-size: 18px;
+        font-style: italic;
+        font-weight: bold;
+    }
+    #button1:hover,#button2:hover,#button3:hover{
+        background-color: #517EE9;
+    }
+    .addFormDiv{
+        display:flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+    .formbtn{
+        display:flex;
+        justify-content: space-evenly;
+        margin-top: 40px;
+        margin-bottom: 10px;
+    }
+    .footer_cover{
+        position: absolute;
+        bottom: 0px;
+        text-align: center;
+        width: 100%;
+    }
+</style>
+</body>
+</html>

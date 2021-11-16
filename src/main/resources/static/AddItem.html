@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>FIEMP</title>
+    <h2 id="h2_add" >Add New Item</h2>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body id="container">
+<script th:inline="javascript">
+    var msg = [[${alert[0]}]];
+</script>
+<script type="text/javascript">
+    msg ? window.onload = function(){
+        alert(msg);
+    }:null
+    function validateForm() {
+        var a = document.forms["add"]["itemName"].value;
+        var b = document.forms["add"]["unitPrice"].value;
+        var c = document.forms["add"]["units"].value;
+        if (a == null || a == "" ||  b == null || b == ""||  c == null || c == "") {
+            alert("Please fill all the required fields");
+            return false;
+        }
+    }
+</script>
+<div class="addFormDiv">
+    <form name="add" style="background-color: #B8E9E4">
+        <table border="0" cellpadding="10">
+            <tr>
+                <td style="font-weight: bold">Item Name:</td>
+                <td><input name="itemName" id="itemName" placeholder="Enter Item Name" pattern="[A-Za-z]*$" title="Letters only"/></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Unit Price:</td>
+                <td><input name="unitPrice" id="unitPrice" placeholder="Enter Unit Price" pattern="^\d+(\.\d+)*$" title="Numbers only" /></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold">Number of Units:</td>
+                <td><input name="units" id="units" placeholder="Enter Number of Units" pattern="^[0-9]*$" title="Numbers only" /></td>
+            </tr>
+        </table>
+        <div class="formbtn">
+            <button id="button1" type="submit" name="btn1" formaction="/">Go Back</button>
+            <button id="button2"  type="reset">Clear</button>
+            <button id="button3"  type="submit" name="btn2" formmethod="post" formaction="/item/add" onclick="return validateForm()" >Add Item</button>
+        </div>
+    </form>
+</div>
+<div class="footer_cover">
+    <footer id="footer">Developed by Vinura Chandrasekara(184024H)</footer>
+</div>
+<style type="text/css">
+    #h2_add {
+        font-family: Georgia;
+        text-align: center;
+        margin-top: 15vh;
+    }
+    #container {
+        background-color: #CFFBBE;
+        overflow: hidden;
+    }
+    #button1,#button2,#button3{
+        background-color: #0957C9;
+        color: white
+    }
+    #footer{
+        font-family: Rockwell;
+        color: #9651B2;
+        font-size: 18px;
+        font-style: italic;
+        font-weight: bold;
+    }
+    #button1:hover,#button2:hover,#button3:hover{
+        background-color: #517EE9;
+    }
+    .addFormDiv{
+        display:flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+    .formbtn{
+        display:flex;
+        justify-content: space-evenly;
+        margin-top: 40px;
+        margin-bottom: 10px;
+    }
+    .footer_cover{
+        position: absolute;
+        bottom: 0px;
+        text-align: center;
+        width: 100%;
+    }
+</style>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+  <title>FIEMP</title>
+  <h1 id="h1">Farm Inventory & Employees Management Portal</h1>
+  <h2 id="h2">Item Details</h2>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <link href="styles.css" rel="stylesheet"/>
+</head>
+<body id="container">
+<script>
+  function actionOnSubmit()
+  {
+    let e = document.getElementById("menu");
+    let formaction = e.options[e.selectedIndex].value;
+    document.form1.action = formaction;
+  }
+</script>
+<form name="form1" onSubmit="actionOnSubmit()"  method ="get" style="margin-left: 50px">
+  <label style="font-weight: bold">Select Menu Type:</label>
+  <select id="menu" name="'menu" style="background-color:#B8E9E4; text-align: center ">
+    <option selected value="/">Item</option>
+    <option value="/labourer">Labourer</option>
+    <option value="/equipment">Equipment</option>
+  </select>
+  <input type="submit" value="Go" class="button" id="button1">
+</form>
+<table border="2" align="center" class="table">
+  <thead class="tHead">
+    <tr>
+      <th>Id</th>
+      <th>Item Name</th>
+      <th>Unit Price(Rs.)</th>
+      <th>Number of Units</th>
+      <th>Total(Rs.)</th>
+      <th>Available Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="item : ${listItems}" style="text-align: center" >
+      <td th:text="${item.id}">Id</td>
+      <td th:text="${item.itemName}">Item Name</td>
+      <td th:text="${item.unitPrice}">Unit Price(Rs.)</td>
+      <td th:text="${item.stockIn}-${item.stockOut}">Number of Units</td>
+      <td th:text="(${item.stockIn}-${item.stockOut})*${item.unitPrice}">Total(Rs.)</td>
+      <td>
+        <button class="buttonEdit"><a class="anchor" th:href="@{/item/update/{id}(id = ${item.id})}">Update</a></button>
+        <button class="buttonDel"><a class="anchor"  th:href="@{/item/clearstock/{id}(id = ${item.id})}">Clear Stock</a></button>
+        <button class="buttonDel"><a class="anchor"  th:href="@{/item/delete/{id}(id = ${item.id})}">Delete</a></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="addItem">
+  <form action="/AddItem.html" >
+    <button id="button2">Add New Item</button>
+  </form>
+  <form action="/item/report" method="get">
+    <button id="button3">Get Report</button>
+  </form>
+</div>
+<div class="footer_cover">
+  <footer id="footer">Developed by Vinura Chandrasekara(184024H)</footer>
+</div>
+</body>
+</html>

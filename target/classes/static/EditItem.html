@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <title>FIEMP</title>
+    <h2 style="font-family: Georgia; text-align: center; margin-top: 15vh">Update Stock Items</h2>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style type="text/css">
+        #button1,#button2,#button3{
+            background-color: #0957C9;
+            color: white
+        }
+        #button1:hover,#button2:hover,#button3:hover{
+            background-color: #517EE9;
+        }
+    </style>
+</head>
+<body style="background-color: #CFFBBE;overflow: hidden">
+<script>
+    function show_alert() {
+        alert("Details Updated");
+    }
+</script>
+<div style="display:flex; margin-top: 7.5vh; justify-content: center">
+    <form th:object="${item}" method="post" onsubmit="show_alert();" style="background-color: #B8E9E4" >
+        <table border="0" cellpadding="10" align="center">
+            <tr>
+                <td>Item ID:</td>
+                <td>
+                    <input type="text" th:field="*{id}" readonly="readonly" style=" text-align:center; background-color:#E8F5F5; border-color:#E8F5F5 "/>
+                </td>
+            </tr>
+            <tr>
+                <td>Item Name:</td>
+                <td>
+                    <input type="text" th:field="*{itemName}" readonly="readonly" style=" text-align:center; background-color:#E8F5F5; border-color:#E8F5F5 " />
+                </td>
+            </tr>
+            <tr>
+                <td>Unit Price(Rs.):</td>
+                <td>
+                    <input type="text" th:field="*{unitPrice}" pattern="^\d+(\.\d+)*$" title="Numbers only"  style="text-align:center;"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Updated Number of Units:</td>
+                <td>
+                    <input type="text" name="stockChange" pattern="^[0-9]*$" title="Numbers only"  placeholder="Enter updated amount" style="text-align:center;"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="center"><button id="button1" type="submit" formmethod="post" formaction="/item/update/in">Add & Update</button></td>
+                <td align="center"><button id="button2" type="submit" formmethod="post" formaction="/item/update/out">Remove & Update</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div style="display:flex; justify-content: center; margin-top: 20px">
+    <button id="button3" onclick="history.back()">Go Back</button>
+</div>
+<div style="position: absolute;bottom: 0px;text-align: center;width: 100%;">
+    <footer style="font-family: Rockwell;color: #9651B2;font-size: 18px;font-style: italic;font-weight: bold;">Developed by Vinura Chandrasekara(184024H)</footer>
+</div>
+</body>
+</html>
